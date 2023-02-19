@@ -13,11 +13,11 @@ class Note:
         Note.listNotes.append(Note(title, body))
 
     def printNote(self):
-        print(Note.listNotes.index(self))
-        print(self.data)
-        print(self.dataChanges)
-        print(self.title)
-        print(self.body)
+        print(f'ID: {Note.listNotes.index(self)}')
+        print(f'Дата создания: {self.data}')
+        print(f'Дата изменения: {self.dataChanges}')
+        print(f'Заголовок: {self.title}')
+        print(f'Текст: {self.body}')
 
     def printNotes():
         for note in Note.listNotes:
@@ -38,3 +38,9 @@ class Note:
             note.title = newtitle
             note.body = newbody
             note.dataChanges = datetime.now()
+
+    def removeNote(id : int):
+        if(len(Note.listNotes) >= id):
+            Note.listNotes.remove(Note.listNotes[id])
+        else:
+            print('Нет такой заметки.')
