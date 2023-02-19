@@ -3,14 +3,17 @@ from datetime import datetime
 class Note:
     listNotes = list()
 
-    def __init__(self, title : str, body : str):
+    def __init__(self, title : str, body : str, data=datetime.now(), dataChanges=datetime.now()):
         self.title = title
         self.body = body
-        self.data = datetime.now()
-        self.dataChanges = self.data
+        self.data = data
+        self.dataChanges = dataChanges
 
     def createNote(title : str, body : str):
         Note.listNotes.append(Note(title, body))
+    
+    def addNote(self):
+        Note.listNotes(self)
 
     def printNote(self):
         print(f'ID: {Note.listNotes.index(self)}')
