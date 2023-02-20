@@ -3,22 +3,22 @@ from datetime import datetime
 class Note:
     listNotes = list()
 
-    def __init__(self, title : str, body : str, data=datetime.now(), dataChanges=datetime.now()):
+    def __init__(self, title : str, body : str, date=datetime.now().isoformat(), dateChanges=datetime.now().isoformat()):
         self.title = title
         self.body = body
-        self.data = data
-        self.dataChanges = dataChanges
+        self.date = date
+        self.dateChanges = dateChanges
 
     def createNote(title : str, body : str):
         Note.listNotes.append(Note(title, body))
     
     def addNote(self):
-        Note.listNotes(self)
+        Note.listNotes.append(self)
 
     def printNote(self):
-        print(f'ID: {Note.listNotes.index(self)}')
-        print(f'Дата создания: {self.data}')
-        print(f'Дата изменения: {self.dataChanges}')
+        print(f'ID: {Note.listNotes.index(self)+1}')
+        print(f'Дата создания: {self.date}')
+        print(f'Дата изменения: {self.dateChanges}')
         print(f'Заголовок: {self.title}')
         print(f'Текст: {self.body}')
 
@@ -40,7 +40,7 @@ class Note:
         if(answer.lower() == 'д'):
             note.title = newtitle
             note.body = newbody
-            note.dataChanges = datetime.now()
+            note.dateChanges = datetime.now().isoformat()
 
     def removeNote(id : int):
         if(len(Note.listNotes) >= id):
