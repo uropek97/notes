@@ -1,8 +1,6 @@
 from datetime import datetime
 
 class Note:
-    #listNotes = list()
-
     def __init__(self, title : str, body : str, date=datetime.now().isoformat(), dateChanges=datetime.now().isoformat()):
         self.title = title
         self.body = body
@@ -11,9 +9,6 @@ class Note:
 
     def createNote(title : str, body : str):
         return Note(title, body)
-    
-    # def addNote(self):
-    #     Note.listNotes.append(self)
 
     def printNote(self):
         print(f'Заголовок: {self.title}')
@@ -24,28 +19,17 @@ class Note:
         print(f'Дата создания: {self.date}')
         print(f'Дата изменения: {self.dateChanges}')
 
-    # def printNotes():
-    #     for note in Note.listNotes:
-    #         Note.printNote(note)
-
-    # def changeNote(id : int):
-    #     note = Note.listNotes[id]
-    #     note.printNote()
-    #     print('Изменение заметки: ')
-    #     print('Заголовок:', note.title)
-    #     newtitle = input('Новый заголовок: ')
-    #     print('Изменение текста: ')
-    #     print('Текст:', note.body)
-    #     newbody = input('Новый текст заметки: ')
-    #     print('Сохранить изменения? (Д - сохранить)')
-    #     answer = input()
-    #     if(answer.lower() == 'д'):
-    #         note.title = newtitle
-    #         note.body = newbody
-    #         note.dateChanges = datetime.now().isoformat()
-
-    # def removeNote(id : int):
-    #     if(len(Note.listNotes) >= id):
-    #         Note.listNotes.remove(Note.listNotes[id])
-    #     else:
-    #         print('Нет такой заметки.')
+    def changeNote(self):
+        self.printNote()
+        print('Изменение заметки: ')
+        print('Заголовок:', self.title)
+        newtitle = input('Новый заголовок: ')
+        print('Изменение текста: ')
+        print('Текст:', self.body)
+        newbody = input('Новый текст заметки: ')
+        print('Сохранить изменения? (Д - сохранить)')
+        answer = input()
+        if(answer.lower() == 'д'):
+            self.title = newtitle
+            self.body = newbody
+            self.dateChanges = datetime.now().isoformat()
