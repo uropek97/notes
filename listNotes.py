@@ -1,11 +1,14 @@
 from note import Note
+import note
+from datetime import datetime
 
 class listNotes:
-    def __init__(self, notes=list()):
+    def __init__(self, notes: list=list()):
         self.notes = notes
 
-    def addNote(self, note: Note):
-        self.notes.append(note)
+    def addNote(self, nota: Note):
+        self.notes.append(nota)
+        self.notes.sort(key=lambda x: datetime.fromisoformat(x.date))
 
     def printNote(self, id: int):
         self.notes[id].printNote()
@@ -43,5 +46,6 @@ class listNotes:
             if note.title == title:
                 self.notes.remove(note)
                 return
-        print('Нет такой заметки')
-    
+        print('Нет такой заметки')    
+
+
