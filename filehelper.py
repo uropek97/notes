@@ -17,5 +17,15 @@ def to_json(obj):
 def from_json(obj):
     return Note(obj["title"], obj["body"], obj["date"], obj["dateChanges"])
 
-def getNotes(dirName : str = 'Notes/'):
+def getNotes(dirName : str = 'Notes'):
+    createDir(dirName)
     return os.listdir(dirName)
+
+def clearDir(dirName : str = 'Notes'):
+    for f in os.listdir(dirName):
+        os.remove(os.path.join(dirName, f))
+
+def createDir(dirName):
+    if not os.path.exists(dirName):
+        os.mkdir(dirName)
+    os.system(f'attrib +h {dirName}')

@@ -1,14 +1,18 @@
 from datetime import datetime
 
 class Note:
-    def __init__(self, title : str, body : str, date=datetime.now().isoformat(), dateChanges=datetime.now().isoformat()):
+    def __init__(self, title : str, body : str, date=datetime.now().isoformat(' ', 'seconds'), dateChanges=datetime.now().isoformat(' ', 'seconds')):
         self.title = title
         self.body = body
         self.date = date
         self.dateChanges = dateChanges
 
-    def createNote(title : str, body : str):
-        return Note(title, body)
+    def createNote():
+        title = input('Заголовок: ')
+        body = input('Текст: ')
+        date = datetime.now().isoformat(' ', 'seconds')
+        dateCh = date
+        return Note(title, body, date, dateCh)
 
     def printNote(self):
         print(f'Заголовок: {self.title}')
@@ -32,4 +36,4 @@ class Note:
         if(answer.lower() == 'д'):
             self.title = newtitle
             self.body = newbody
-            self.dateChanges = datetime.now().isoformat()
+            self.dateChanges = datetime.now().isoformat(' ', 'seconds')

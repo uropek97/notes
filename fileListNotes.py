@@ -1,17 +1,20 @@
 import filehelper
 from listNotes import listNotes
 
+dirName = 'Notes'
+firstPart = 'note'
+endPart = '.json'
+
 def writeNote(listNotes : listNotes, id: int, filename: str):
     filehelper.write(listNotes.notes[id], filename)
 
 def writeNotes(listNotes : listNotes):
-    firstPart = 'Notes/note'
-    endPart = '.json'
+    filehelper.createDir(dirName)
+    filehelper.clearDir(dirName)
     for index in range(len(listNotes.notes)):
-        writeNote(index, f'{firstPart}{index+1}{endPart}')
+        writeNote(listNotes, index, f'{dirName}/{firstPart}{index+1}{endPart}')
 
 def readNotes(listNotes : listNotes = listNotes()):
-    dirName = 'Notes/'
     for file in filehelper.getNotes(dirName):
-        listNotes.addNote(filehelper.read(f'{dirName}{file}'))
+        listNotes.addNote(filehelper.read(f'{dirName}/{file}'))
     return listNotes
