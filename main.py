@@ -1,12 +1,4 @@
-from note import Note
+from comands import run
 
-body = 'body'
-title = 'title' 
-
-note1 = Note(title, body)
-
-body2 = 'body2'
-title2 = 'title2' 
-
-note2 = Note(title2, body2)
-
+#осталось сделать команду help, а так проект готов. Если не учитывать шероховатости
+run()
